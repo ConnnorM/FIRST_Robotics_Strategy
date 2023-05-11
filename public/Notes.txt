@@ -1,0 +1,2 @@
+- Files in the top-level/public directory (like images) can be referenced from 
+the root of the application, just like pages

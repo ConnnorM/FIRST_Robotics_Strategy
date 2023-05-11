@@ -1,1 +1,1 @@
-# FIRST_Robotics_Strategy
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).
