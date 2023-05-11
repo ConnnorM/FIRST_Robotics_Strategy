@@ -53,7 +53,8 @@ const Header = styled.div`
     }
 
     @media (max-width: 415px) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        display: flex;
+        justify-content: space-around;
         font-size: 0.75em;
 
         #SiteTitle{
@@ -62,7 +63,8 @@ const Header = styled.div`
     }
 
     @media (max-width: 280px){
-        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        justify-content: space-around;
         #SiteTitle{
             display: none;
         }
