@@ -145,6 +145,38 @@ export default function bonus({data1, data2, data3, data4}){
         return slowTeams[slowest].replace(/\D/g, "");
     }
 
+    //removes the useless 'frc' prefix from team kesy
+    function cleanTeamKeys() {
+        for (var i = 0; i < slowTeams.length; i++){
+            slowTeams[i] = slowTeams[i].replace(/\D/g, "");
+        }
+    }
+
+    //This gave me a lot of trouble so I used chatgpt to help me write it.
+    //mapping is cool. dictionaries give me brain melt
+    //I TAKE NO CREDIT FOR THIS FUNCTION
+    function sortAndCleanSlowTeams() {
+        cleanTeamKeys();
+        // Create an array of objects that include the number and its original index
+        const indexedNumbers = slowTeamCounter.map((slowTeamCounter, index) => ({ slowTeamCounter, index }));
+      
+        // Use the Array.sort() method with a compare function to sort the numbers in descending order
+        indexedNumbers.sort((a, b) => b.slowTeamCounter - a.slowTeamCounter);
+      
+        // Extract the sorted number and index lists from the array of objects
+        const sortedNumbers = indexedNumbers.map(obj => obj.slowTeamCounter);
+        const sortedIndexes = indexedNumbers.map(obj => obj.index);
+      
+        // Sort the corresponding list based on the new indexes of the first list
+        const sortedCorrespondingList = sortedIndexes.map(index => slowTeams[index]);
+      
+        // Return an object containing the sorted number and corresponding lists
+        slowTeamCounter = sortedNumbers;
+        slowTeams = sortedCorrespondingList;
+      }
+
+
+
     //changes the event to be displayed
     const [currData, setCurrData] = useState(data1);
     const [eventName, setEventName] = useState("Orange County Regional");
@@ -182,6 +214,7 @@ export default function bonus({data1, data2, data3, data4}){
         <section>
             {populateStartTimes(currData)}
             {determineSlowTeams()}
+            {sortAndCleanSlowTeams()}
             {/* {printSlowTeams()} */}
             {/* {PrintDelays()} */}
             <SiteHeader/>
@@ -212,10 +245,21 @@ export default function bonus({data1, data2, data3, data4}){
             </MessageSection>
 
             <StatsSection>
+                <br/>
                 <p>Average Match Delay: {convertSecToHMS(calculateAverageMatchDelay())}</p>
                 <p>Min Match Delay: {convertSecToHMS(getMinMatchDelay())}</p>
                 <p>Max Match Delay: {convertSecToHMS(getMaxMatchDelay())}</p>
-                <p>Slowest Team: {getSlowestTeam()}</p>
+                <h2>Slowest Teams | Number of Slow Matches</h2> 
+                <p id="slow1">1. {slowTeams[0]} | {slowTeamCounter[0]}</p>
+                <p id="slow1">2. {slowTeams[1]} | {slowTeamCounter[1]}</p>
+                <p id="slow2">3. {slowTeams[2]} | {slowTeamCounter[2]}</p>
+                <p id="slow2">4. {slowTeams[3]} | {slowTeamCounter[3]}</p>
+                <p id="slow3">5. {slowTeams[4]} | {slowTeamCounter[4]}</p>
+                <p id="slow3">6. {slowTeams[5]} | {slowTeamCounter[5]}</p>
+                <p id="slow4">7. {slowTeams[6]} | {slowTeamCounter[6]}</p>
+                <p id="slow4">8. {slowTeams[7]} | {slowTeamCounter[7]}</p>
+                <p id="slow5">9. {slowTeams[8]} | {slowTeamCounter[8]}</p>
+                <p id="slow5">10. {slowTeams[9]} | {slowTeamCounter[9]}</p>
             </StatsSection>
 
             <Note>
@@ -302,7 +346,7 @@ const MessageSection = styled.div`
 
     h2 {
         margin-top: 1vh;
-        margin-bottom: 7.5vh;
+        margin-bottom: 5vh;
     }
 `
 const StatsSection = styled.div`
@@ -318,12 +362,38 @@ const StatsSection = styled.div`
     align-items: center;
 
     p {
+        margin-top: 0px;
+        margin-bottom: 2.5vh;
+    }
+
+    #slow1 {
+        color: #ff1100;
+    }
+
+    #slow2 {
+        color: #ff4000;
+    }
+
+    #slow3 {
+        color: #ff5e00;
+    }
+
+    #slow4 {
+        color: #ff6f00;
+    }
+
+    #slow5 {
+        color: #ff8c00;
+    }
+
+    p {
         font-size: 1.5em;
     }
 `
 
 const Note = styled.h4`
     color: green;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-left: 2vw;
+    padding-bottom: 3vh;
 `
