@@ -39,10 +39,13 @@ export default function apiTesting({data, eventKey}) {
                 />
                 <br />
                 <br />
-                <button 
-                    type="submit"
-                    style={{fontSize: "1.5em"}}
-                    >Show Matches</button>
+                <ButtonSection>
+                    <button 
+                        type="submit"
+                        style={{fontSize: "1.5em"}}
+                        >Show Matches
+                    </button>
+                </ButtonSection>
                 <br />
                 <br />
                 </form>
@@ -79,4 +82,26 @@ const MatchSection = styled.div`
     display: grid;
     margin-left: 10vw;
     margin-right: 10vw;
+`
+
+const ButtonSection = styled.div`
+    button {
+        color: white;
+        background-color: blue;
+        font-weight: bold;
+        font-size: 1.5em;
+        border: 2px solid gray;
+    }
+
+    button:hover {
+        background-color: white;
+        color: blue;
+        box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
+    }
+
+    button:focus-visible {
+        outline: 2.5px solid red;
+    }
 `

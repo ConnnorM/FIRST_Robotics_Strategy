@@ -34,7 +34,6 @@ const Header = styled.div`
     padding-top: 2vh;
     padding-bottom: 2vh;
     
-
     h1 {
         padding-top: 2vh;
         padding-bottom: 2vh;
