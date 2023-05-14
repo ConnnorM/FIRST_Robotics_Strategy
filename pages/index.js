@@ -77,6 +77,7 @@ export default function apiTesting({data1, data2, data3, data4}) {
             </EventButtonsSection>
 
             <MessageSection>
+                <h1> Viewing: {eventName}</h1>
                 <h2>{message}</h2>
             </MessageSection>
             <FormSection>

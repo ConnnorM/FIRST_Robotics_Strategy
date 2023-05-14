@@ -13,7 +13,7 @@ export default function SiteHeader() {
             />
             <h1 id="SiteTitle">5199 Strategy</h1>
             <Link href="/" className="pageLink">Matches</Link>
-            <Link href="/graphs" className="pageLink">Graphs</Link>
+            <Link href="/stats" className="pageLink">Stats</Link>
             <Link href="/bonus" className="pageLink">Bonus</Link>
             <h1></h1>
         </Header>
